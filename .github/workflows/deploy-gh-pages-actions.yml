@@ -26,21 +26,14 @@ jobs:
           git init -b gh-pages ./gh-pages
       - run: |
           cd ./gh-pages
-      - run: |
-          cd ./gh-pages
           git remote add -t gh-pages origin \
           https://git${{ github.token }}@github.com/${{ github.repository }}.git
       - run: |
+          cd ./gh-pages
           git pull origin gh-pages
-      - run: |
           rm -rf ./*
-      - run: |
           cp -rf ../build/* ./
-      - run: |
           git add .
-      - run: |
           git commit -m "${{ github.actor }} deploy"
-      - run: |
           git push origin gh-pages
-      - run: |
           cd ..
