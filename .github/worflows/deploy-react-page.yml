@@ -18,11 +18,11 @@ jobs:
           git config --global user.email "${{ github.event.pusher.email }}"
           git config --global user.name "${{ github.actor }}" 
       - run: |
+      - run: |
           mkdir -p ./gh-pages
           git init -b gh-pages ./gh-pages
           cd ./gh-pages
-          git remote add -t gh-pages origin \
-          https://github.com/camt-mmit/2022_01-ci-cd-my-react-FourthTS
+          git remote add -t gh-pages origin https://github.com/camt-mmit/2022_01-ci-cd-my-react-FourthTS
           git pull origin gh-pages
       - run : |
           rm -rf ./*
