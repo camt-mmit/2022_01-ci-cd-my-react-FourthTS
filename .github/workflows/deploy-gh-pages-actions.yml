@@ -2,7 +2,7 @@ name: deploy-gh-pages-actions
 run-name: ${{ github.actor }} is deploying react-pages
 on:
   push: 
-    branchs: 
+    branches: 
       - master
 jobs: 
   deploy-gh-pages:
@@ -24,8 +24,7 @@ jobs:
           mkdir -p ./gh-pages
           git init -b gh-pages ./gh-pages
           cd ./gh-pages
-          git remote add -t gh-pages origin \
-          https://git${{ github.token }}@github.com/${{ github.repository }}.git
+          git remote add -t gh-pages origin https://github.com/camt-mmit/2022_01-ci-cd-my-react-FourthTS
           git pull origin gh-pages
           cd ..
       - run : |
