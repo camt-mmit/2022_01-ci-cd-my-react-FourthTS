@@ -1,4 +1,4 @@
-name: deploy-react-page
+name: deploy-gh-pages-actions
 run-name: ${{ github.actor }} is deploying react-pages
 on:
   push: 
