@@ -16,8 +16,10 @@ jobs:
           node-version : "16"
       - run: |
           git config --global user.email "${{ github.event.pusher.email }}"
-          git config --global user.name "${{ github.actor }}" 
+          git config --global user.name "${{ github.actor }}"
       - run: |
+          npm install
+          PUBILC_URL=/${{ github.event.repository.name}} npm run build
       - run: |
           mkdir -p ./gh-pages
           git init -b gh-pages ./gh-pages
