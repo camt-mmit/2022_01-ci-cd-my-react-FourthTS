@@ -27,6 +27,7 @@ jobs:
       - run: |
           cd ./gh-pages
       - run: |
+          cd ./gh-pages
           git remote add -t gh-pages origin \
           https://git${{ github.token }}@github.com/${{ github.repository }}.git
       - run: |
