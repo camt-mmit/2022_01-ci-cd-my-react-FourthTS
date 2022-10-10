@@ -29,6 +29,8 @@ jobs:
 
   deploy-gh-pages:
     runs-on: ubuntu-latest
+    needs : 
+      - feature-01
     steps: 
       - uses: actions/checkout@v3
         with:
