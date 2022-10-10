@@ -21,19 +21,4 @@ jobs:
           npm install
           PUBILC_URL=/${{ github.event.repository.name}} npm run build
       - run: |
-          mkdir -p ./gh-pages
-      - run: |
-          git init -b gh-pages ./gh-pages
-      - run: |
-          cd ./gh-pages
-          git remote add -t gh-pages origin \
-          https://git${{ github.token }}@github.com/${{ github.repository }}.git
-      - run: |
-          cd ./gh-pages
-          git pull origin gh-pages
-          rm -rf ./*
-          cp -rf ../build/* ./
-          git add .
-          git commit -m "${{ github.actor }} deploy"
-          git push origin gh-pages
-          cd ..
+          
