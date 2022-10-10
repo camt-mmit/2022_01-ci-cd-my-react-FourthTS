@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is deploying react-pages
 on:
   push: 
     branches: 
-      - test-feature-01
+      - master
 jobs: 
   deploy-gh-pages:
     runs-on: ubuntu-latest
@@ -17,11 +17,19 @@ jobs:
       - run: |
           git config --global user.email "${{ github.event.pusher.email }}"
           git config --global user.name "${{ github.actor }}"
-      - run: npm ci
-      - run: yarn run test
       - run: |
-            git fetch --unshallow
-            git checkout master
-            git merge test-feature-01
-            git push origin master
-      
+          npm install
+          PUBILC_URL=/${{ github.event.repository.name}} npm run build
+      - run: |
+          mkdir ./gh-pages
+          git init -b gh-pages ./gh-pages
+          cd ./gh-pages
+          git remote add -t gh-pages origin \
+          https://git:${{ github.token }}@github.com/${{ github.repository }}.git 
+          git pull origin gh-pages
+          rm -rf ./*
+          cp -rf ../build/* ./
+          git add .
+          git commit -m "Manually commit"
+          git push origin gh-pages
+          cd ..
