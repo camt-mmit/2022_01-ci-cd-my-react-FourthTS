@@ -23,4 +23,5 @@ jobs:
             git fetch --unshallow
             git checkout master
             git merge test-feature-01
+            git push
       
