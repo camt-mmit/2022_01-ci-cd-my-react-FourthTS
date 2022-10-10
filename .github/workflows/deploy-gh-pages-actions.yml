@@ -19,5 +19,8 @@ jobs:
           git config --global user.name "${{ github.actor }}"
       - run: npm ci
       - run: yarn run test
-      - run: git fetch --unshallow
+      - run: |
+            git fetch --unshallow
+            git checkout master
+            git merge test-feature-01
       
