@@ -22,6 +22,5 @@ jobs:
           PUBILC_URL=/${{ github.event.repository.name}} npm run build
       - run: npm install -g yarn 
       - run: yarn install --frozen-lockfile
-      - run: yarn run lint
       - run: yarn run test:ci
       - run: git fetch --unshallow
